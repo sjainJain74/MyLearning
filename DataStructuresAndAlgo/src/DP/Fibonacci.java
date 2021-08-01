@@ -13,9 +13,9 @@ public class Fibonacci {
 		// F(n) = F(n-1)+F(n-2)
 		// 2^n is the Time Complexity
 		// O(n) considering the stack call
-		System.out.println(fibRecussive(8));
-		System.out.println(fibDpOtimized(8));
-		System.out.println(fibDp(8));
+		System.out.println(fibRecussive(6));
+		System.out.println(fibDpOtimized(6));
+		System.out.println(fibDp(6));
 	}
 
 	public static int fibDpOtimized(int n) {
@@ -23,9 +23,9 @@ public class Fibonacci {
 		// F0 =0
 		// F1 =1
 		// F(n) = F(n-1)+F(n-2)
-		int fib = 0;
-		int fib_last = 1;
-		int fib_second_last = 1;
+		int fibCurr = 0 ;
+		int fib_last =1;
+		int fib_second_last =0;
 
 		if (n == 0) {
 			return 0;
@@ -34,11 +34,11 @@ public class Fibonacci {
 		}
 
 		for (int x = 2; x <= n; x++) {
-			fib = fib_last + fib_second_last;
+			fibCurr = fib_last + fib_second_last;
 			fib_second_last = fib_last;
-			fib_last = fib;
+			fib_last = fibCurr;
 		}
-		return fib_second_last;
+		return fibCurr;
 	}
 
 	public static int fibDp(int n) {

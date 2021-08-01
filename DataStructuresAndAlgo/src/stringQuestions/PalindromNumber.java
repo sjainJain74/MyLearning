@@ -1,7 +1,5 @@
 package stringQuestions;
 
-import java.math.BigInteger;
-
 public class PalindromNumber {
 
 	public static void main(String arg[]) {
