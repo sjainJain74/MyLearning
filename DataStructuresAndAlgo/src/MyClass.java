@@ -26,6 +26,8 @@ public class MyClass {
 		//System.out.println(knapSachTopDownUnbounded(Wt, value, length, W, dp_top_code));
 
 	}
+	
+	
 
 	private static int profit(int[] length, int[] rate, int n, int l) {
 		// Base condition
