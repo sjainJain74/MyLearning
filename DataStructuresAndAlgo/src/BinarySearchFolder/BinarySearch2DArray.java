@@ -12,9 +12,21 @@ public class BinarySearch2DArray {
 				{ 1, 1, 1, 1, 1 } };
 		int k = 3;
 
+		// int[][] index_sum = new int[][]; //Gives compilation error
+		int[][] index_sum = new int[mat.length][];
+
+		int[] xaa = mat[0];
+
+		int n = mat.length; // array is not an object thus we have length variable
+
 		System.out.println(Arrays.toString(kWeakestRows(mat, k)));
+		
+		
 
 	}
+	
+	
+	
 
 	private static int binarySearchWithDublicateFirstOccurance(int[] myArray) {
 		int start = 0;

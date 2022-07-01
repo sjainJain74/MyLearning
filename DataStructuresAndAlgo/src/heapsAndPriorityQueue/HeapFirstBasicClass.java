@@ -34,6 +34,7 @@ public class HeapFirstBasicClass {
 		 * System.out.print(p3.poll()); System.out.print(p3.poll());
 		 */
 
+		// This is min heap, That means smallest at root
 		PriorityQueue<int[]> pTuple = new PriorityQueue<int[]>(new MyDescComparatorForTuple());
 		pTuple.add(new int[] { 3, 1 });
 		pTuple.add(new int[] { 4, 1 });
@@ -54,6 +55,8 @@ public class HeapFirstBasicClass {
 
 }
 
+//Min heap comparator, Sort asec
+//4,0,1,2 -->0,1,2,4
 class MyDescComparatorForTuple implements Comparator<int[]> {
 
 	@Override
@@ -61,9 +64,9 @@ class MyDescComparatorForTuple implements Comparator<int[]> {
 		// TODO Auto-generated method stub
 
 		if (o1[1] > o2[1]) {
-			return 1;
+			return 1; //swap
 		} else if (o1[1] < o2[1]) {
-			return -1;
+			return -1; //No need to swap
 		}
 
 		else if (o1[1] == o2[1] && o1[0] > o2[0]) {

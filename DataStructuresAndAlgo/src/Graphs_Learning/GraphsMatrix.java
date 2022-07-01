@@ -3,7 +3,7 @@ package Graphs_Learning;
 import java.util.List;
 import java.util.Map.Entry;
 
-import Graphs_Learning.GraphsList.Edge;
+import Graphs_Learning.GraphsAdjList.Edge;
 
 //Undirected Graphs (Both Direction)
 // Good when graph is dense
@@ -11,17 +11,17 @@ import Graphs_Learning.GraphsList.Edge;
 public class GraphsMatrix {
 	public class Vertex {
 		Character lebel;
+
 		public Vertex(Character label) {
 			this.lebel = label;
-			
+
 		}
 	}
-	
+
 	public class Edges {
-		
+
 	}
-	
-	
+
 	int verrtexCount;
 	boolean[][] adjMatrix;
 
@@ -51,8 +51,5 @@ public class GraphsMatrix {
 		else
 			return false;
 	}
-	
-	
 
-	}
 }

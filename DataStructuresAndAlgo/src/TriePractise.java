@@ -23,6 +23,7 @@ class Trie {
 				// insert a new node if the path does not exist
 				cur.childrenMap.put(c, new TrieNode());
 			}
+			// We have that character so go to next level
 			cur = cur.childrenMap.get(c);
 		}
 		cur.isWord = true;
@@ -38,12 +39,14 @@ class Trie {
 			}
 			cur = cur.childrenMap.get(c);
 		}
-		return cur.isWord;
+		return cur.isWord; // We store true and false at end of word
 	}
 
 	/**
 	 * Returns if there is any word in the trie that starts with the given prefix.
+	 *
 	 */
+	// Exactly same as search
 	public boolean startsWith(String prefix) {
 		TrieNode cur = root;
 		for (int i = 0; i < prefix.length(); i++) {

@@ -5,18 +5,18 @@ import java.util.Map;
 
 class LRUCache {
 
-	class Node {
+	class DLNode {
 		int key;
 		int value;
-		Node next;;
-		Node prev;
+		DLNode next;;
+		DLNode prev;
 
 	}
 
-	Map<Integer, Node> m;
-	int count;
-	Node head;
-	Node tail;
+	Map<Integer, DLNode> m;
+	// int count;
+	DLNode head;
+	DLNode tail;
 	int capacity;
 
 	public LRUCache(int capacity) {
@@ -24,8 +24,8 @@ class LRUCache {
 		this.capacity = capacity;
 
 		// Create a Doubly linked list with only head and tail two elements.
-		head = new Node();
-		tail = new Node();
+		head = new DLNode();
+		tail = new DLNode();
 
 		head.prev = null;
 		head.next = tail;
@@ -33,7 +33,7 @@ class LRUCache {
 		tail.prev = head;
 		tail.next = null;
 
-		m = new HashMap<Integer, Node>();
+		m = new HashMap<Integer, DLNode>();
 
 	}
 
@@ -44,7 +44,7 @@ class LRUCache {
 
 		//// delete from list
 		//// add in the list after head
-		/// update the map
+		//// update the map
 		//// return the value
 
 		if (!m.containsKey(key)) {
@@ -52,9 +52,9 @@ class LRUCache {
 		}
 
 		else {
-			Node node = m.get(key);
+			DLNode node = m.get(key);
 			int value = node.value;
-			
+
 			addInListAfterHead(node);
 			deletefromList(node);
 			updateMap(node);
@@ -63,13 +63,13 @@ class LRUCache {
 
 	}
 
-	private void updateMap(Node node) {
+	private void updateMap(DLNode node) {
 		m.put(node.key, node);
 
 	}
 
-	private void addInListAfterHead(Node node) {
-		Node temp = head.next;
+	private void addInListAfterHead(DLNode node) {
+		DLNode temp = head.next;
 		node.prev = head;
 		node.next = temp;
 
@@ -78,9 +78,9 @@ class LRUCache {
 
 	}
 
-	private void deletefromList(Node node) {
-		Node p1 = node.prev;
-		Node n1 = node.next;
+	private void deletefromList(DLNode node) {
+		DLNode p1 = node.prev;
+		DLNode n1 = node.next;
 
 		p1.next = n1;
 		n1.prev = p1;
@@ -88,7 +88,7 @@ class LRUCache {
 	}
 
 	public void put(int key, int value) {
-		Node n = new Node();
+		DLNode n = new DLNode();
 		n.key = key;
 		n.value = value;
 
@@ -160,7 +160,7 @@ public class LRUMain {
 		cache.put(1, 1);
 		cache.put(4, 1);
 		System.out.println(cache.get(2));
-		
+
 		// ["LRUCache","put","put","get","put","put","get"]
 		// [[2],[2,1],[2,2],[2],[1,1],[4,1],[2]]
 	}

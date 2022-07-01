@@ -8,13 +8,13 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
-import Graphs_Learning.GraphsList.Edge;
+import Graphs_Learning.GraphsAdjList.Edge;
 
 public class DirectedGraphsTraversalUsingAdjList {
 
 	public static void main(String arg[]) {
 		int v = 6; // Number of nodes
-		GraphsList graph = new GraphsList(v);
+		GraphsAdjList graph = new GraphsAdjList(v);
 
 		// From Zero
 		graph.addEdge("0", "1", 4);
@@ -33,6 +33,9 @@ public class DirectedGraphsTraversalUsingAdjList {
 
 		// From four
 		graph.addEdge("4", "5", 6);
+		
+	
+
 
 		graph.print();
 		System.out.println("BFS Traversal");
@@ -47,7 +50,7 @@ public class DirectedGraphsTraversalUsingAdjList {
 		System.out.println(dfsTraversalIterativeUsingAdjList("0", graph));
 	}
 
-	public static List bfsTraversalUsingAdjList(String startingVertex, GraphsList graph) {
+	public static List bfsTraversalUsingAdjList(String startingVertex, GraphsAdjList graph) {
 		// Create a Queue
 		// Add zero element and mark visited
 		// Add neighbour into queue
@@ -76,7 +79,7 @@ public class DirectedGraphsTraversalUsingAdjList {
 	}
 
 	// DFS With Recurrsion
-	public static List<String> dfsTraversalWithRecurrsionUsingAdjList(String vertex, GraphsList graph,
+	public static List<String> dfsTraversalWithRecurrsionUsingAdjList(String vertex, GraphsAdjList graph,
 			List<String> outPutDFS, Set<String> visisted) {
 
 		if (visisted.contains(vertex) || vertex == null) {
@@ -96,7 +99,7 @@ public class DirectedGraphsTraversalUsingAdjList {
 
 	// DFS With Without Recurrsion
 
-	public static List<String> dfsTraversalIterativeUsingAdjList(String vertex, GraphsList graph) {
+	public static List<String> dfsTraversalIterativeUsingAdjList(String vertex, GraphsAdjList graph) {
 
 		List<String> outPutDFS = new LinkedList();
 		Stack<String> stack = new Stack<String>();

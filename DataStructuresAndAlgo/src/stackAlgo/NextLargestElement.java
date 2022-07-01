@@ -8,6 +8,14 @@ import java.util.Stack;
 public class NextLargestElement {
 
 	public static void main(String arg[]) {
+		
+		 //[13, 7, 6, 12]
+		
+		  /*Element        NGE
+		   13      -->    -1
+		   7       -->     12
+		   6       -->     12
+		   12      -->     -1*/
 
 		// Aditya verma Code
 		// https://www.youtube.com/watch?v=NXOOYYwpbg4&list=PL_z_8CaSLPWdeOezg68SKkeLN4-T_jNHd&index=2
