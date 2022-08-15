@@ -9,6 +9,11 @@ import java.util.List;
 import java.util.Set;
 
 public class SlidingWindowQuestion {
+	//https://leetcode.com/problems/valid-anagram/submissions/
+	//https://leetcode.com/problems/permutation-in-string/submissions/
+	//https://leetcode.com/problems/group-anagrams/
+	//https://leetcode.com/problems/find-all-anagrams-in-a-string/
+	
 
 	public static void main(String[] args) {
 		// Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
@@ -17,23 +22,27 @@ public class SlidingWindowQuestion {
 
 		int nums[] = { 2, 5, 1, 8, 2, 9, 1 };
 		int k = 3;
-		/// System.out.println(Arrays.toString(maxSlidingWindow(nums,k)));
+		//System.out.println(Arrays.toString(maxSlidingWindow(nums,k)));
 
 		int nums2[] = { 1, 3, -1, -3, 5, 3, 6, 7 };
 		int k2 = 3;
-		// System.out.println(Arrays.toString(maxSlidingWindow(nums2, k2)));
+		//System.out.println(Arrays.toString(maxSlidingWindow(nums2, k2)));
 
 		// To do
-		// https://leetcode.com/problems/maximum-subarray/
-		// https://leetcode.com/problems/subarray-sum-equals-k/
-		// https://leetcode.com/problems/minimum-size-subarray-sum/
-		// https://leetcode.com/problems/continuous-subarray-sum/
-		// https://leetcode.com/problems/sliding-window-maximum/solution/
-
-		// int input[] = { 12, -1, -7, 8, -15, 30, 16, 28 };
-		int input[] = { -1, -1, -7, -15, -15, 0 };
+		// https://leetcode.com/problems/maximum-subarray/  If we have positive train coming get added that that..Pepcoding EASY
+		// https://leetcode.com/problems/subarray-sum-equals-k/ Using HashMap and sum so far concept Pepcoding EASY
+		// https://leetcode.com/problems/minimum-size-subarray-sum/ STUCK
+		// https://leetcode.com/problems/continuous-subarray-sum/ 
+		// https://leetcode.com/problems/sliding-window-maximum/solution/ HARD
+		//https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/ STUCK similar to pep coding map concept
+		
+		
+		//https://www.youtube.com/watch?v=uUXXEgK2Jh8&list=PL_z_8CaSLPWeM8BDJmIYDaoQ5zuwyxnfj&index=4
+		//firstNegativeNumbe question
+		 int input[] = { 12, -1, -7, 8, -15, 30, 16, 28 };
+		//int input[] = { -1, -1, -7, -15, -15, 0 };
 		int k3 = 3;
-		// System.out.println(firstNegativeNumber_usingList(input, k2));
+		System.out.println(firstNegativeNumber_usingList(input, k2));
 
 		// int input_ll[] = { 12, -1, -7, 8, -15, 30, 16, 28 };
 		long input_ll[] = { -1, -1, -7, -15, -15, 0 };
@@ -55,10 +64,13 @@ public class SlidingWindowQuestion {
 		// System.out.printf("Length = %d", lenOfLongSubarr(arr, n, k1));
 
 		String s1 = "ab";
-		String s2 = "eiabc";
-		// System.out.println(checkInclusion_Leetcode_567(s1, s2));
+		String s2 = "eiboaoo";
+		System.out.println(checkInclusion_Leetcode_567(s1, s2));
 
 		System.out.println(checkInclusion_Leetcode_567_opti(s1, s2));
+
+		int[] longestConsecutive = new int[] { 1, 2, 3, 4, 300, 200 };
+		//System.out.println(longestConsecutive(longestConsecutive));
 
 	}
 
@@ -75,7 +87,7 @@ public class SlidingWindowQuestion {
 		}
 
 		int i = 0;
-		while (i < ch2.length- ch1.length + 1) {
+		while (i < ch2.length - ch1.length + 1) {
 			// Itr for one window 0-2, 1-3
 			int[] frequeny_ch2 = new int[26];
 			for (int x = i; x < i + ch1.length; x++) {
@@ -90,37 +102,56 @@ public class SlidingWindowQuestion {
 
 		}
 
-		
 		return false;
 
 	}
 
 	public static boolean checkInclusion_Leetcode_567_opti(String s1, String s2) {
 		// s1="ab"
-		// s2="eiabc"
+		// s2="eabc"
+
+		// s1="a"
+		// s2="ab"
+
 		char[] ch1 = s1.toCharArray();
 		char[] ch2 = s2.toCharArray();
-		int[] frequeny_ch1 = new int[26];
-		int[] frequeny_ch2 = new int[26];
-		
+		int[] frequeny = new int[26];
+
+		if (ch1.length > ch2.length) {
+			return false;
+		}
 
 		// Creating frequency array for small String
 		for (int f = 0; f < ch1.length; f++) {
-			frequeny_ch1[ch1[f] - 'a']++;
-			frequeny_ch2[ch2[x] - 'a']++;
+			frequeny[ch1[f] - 'a']++;
+			frequeny[ch2[f] - 'a']--;
 
 		}
+		if (isAllZero(frequeny)) {
+			return true;
+		}
 
-		for (int x = ch1.l < ch2.length; x++) {
-			frequeny_ch2[ch2[x - 1] - 'a']--;
-			frequeny_ch2[ch2[x] - 'a']++;
-			if (Arrays.equals(frequeny_ch1, frequeny_ch2)) {
+		for (int x = 1; x < ch2.length - ch1.length + 1; x++) {
+			frequeny[ch2[x - 1] - 'a']++;
+			frequeny[ch2[x + ch1.length - 1] - 'a']--;
+			if (isAllZero(frequeny)) {
 				return true;
 			}
 		}
 
 		return false;
 
+	}
+
+	private static boolean isAllZero(int[] frequeny) {
+
+		for (int i = 0; i < frequeny.length; i++) {
+			if (frequeny[i] != 0) {
+				return false;
+			}
+
+		}
+		return true;
 	}
 
 	public static List<Integer> firstNegativeNumber_usingList(int[] input, int k) {
@@ -452,5 +483,63 @@ public class SlidingWindowQuestion {
 		return max;
 
 	}
+
+	// [1,2,3,4,300,200] //4
+	/*public static int longestConsecutive(int[] numsl) {
+		Set<Integer> set = new HashSet<Integer>();
+		if (nums.length == 0) {
+			return 0;
+		}
+		for (int i = 0; i < nums.length; i++) {
+			set.add(nums[i]);
+		}
+		int currentMaxStreak = 1;
+		int maxStreak = -1;
+		for (int i = 0; i < nums.length; i++) {
+			if (set.contains(nums[i])) {
+				currentMaxStreak = 1;
+				int currentEle = nums[i];
+				int forGreater = currentEle;
+				int forSmaller = currentEle;
+
+				while (set.contains(forGreater + 1)) {
+					currentMaxStreak++;
+					set.remove(forGreater + 1);
+					forGreater = forGreater + 1;
+				}
+
+				
+				while (set.contains(forSmaller - 1)) {
+					currentMaxStreak++;
+					set.remove(forSmaller - 1);
+					forSmaller = forSmaller - 1;
+				}
+
+				set.remove(currentEle);
+				maxStreak = Math.max(currentMaxStreak, maxStreak);
+				i++;
+
+			}
+		}
+		return maxStreak;
+
+	}
+
+	// [1,300,2,3,4,5,200] //4
+	/*public static int longestConsecutive_using_sortig(int[] nums) {
+		// Sort
+		Arrays.sort(nums); // [1,2,3,4,5,200,300]
+		int currentMaxStreak = 1; // Let's keep one element;
+		int maxStreak = -1;
+
+		for (int i = 1; i < nums.length; i++) {
+			if (nums[i - 1] == nums[i]) {
+				currentMaxStreak++;
+
+			}
+
+		}
+
+	} */
 
 }

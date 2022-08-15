@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Collections;
 
 //https://www.youtube.com/watch?v=QN9hnmAgmOc  ->Must watch!! best explanation for quick sort partition
+// Assembly line of OLF we use to quickly sort. 
+// We pick first element and two pointer start and end. Till start<end first element reaches to the correct position.
 
 public class QuickSort {
 
@@ -91,13 +93,18 @@ public class QuickSort {
 		return i;
 	}
 	
+	//Partition return the jth position where we have done the final swap.
+	//We have plaved the element at correct j position.
+	//all element before j are less and after j are more.
 	private static int partition(int[] input, int start, int end) {
 		int pivot = input[start];
 		int i = start;
 		int j = end;
 
 		while (i <= j) {
-			while (i <= j && input[i] <= pivot) // i<=j if we do not put we will run into stack overflow.
+			while (i <= j && input[i] <= pivot) 
+				// i<=j if we do not put we will run into stack overflow.
+				// 
 				i++;
 			while (i <= j && input[j] > pivot)
 				j--;

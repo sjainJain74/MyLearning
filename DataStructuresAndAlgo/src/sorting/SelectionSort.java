@@ -3,6 +3,8 @@ package sorting;
 import java.util.Arrays;
 
 public class SelectionSort {
+     //Like school line. Select Chotu student come in first
+	 //https://www.youtube.com/watch?v=B-nqY6IYqVw
 
 	/*
 	 * Time Complexity: O(N2) (Best, Worst case both) Complexity is O(N2) when
@@ -12,6 +14,7 @@ public class SelectionSort {
 	/*
 	 * Algo SELECT minimum element and place it at start position. Find second
 	 * largest and place that at second position
+	 * 
 	 */
 
 	/* Read from narsimbha Karu */
@@ -50,6 +53,7 @@ public class SelectionSort {
 				}
 
 				// swap minimum element with i th element
+				//we should add
 				int temp = arr[i];
 				arr[i] = arr[min];
 				arr[min] = temp;

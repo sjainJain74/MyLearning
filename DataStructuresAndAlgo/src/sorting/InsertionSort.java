@@ -3,12 +3,13 @@ package sorting;
 import java.util.Arrays;
 
 public class InsertionSort {
+//Like rammi of card
 
 	/*
-	 * Deck of card :) 
+	 * Deck of card :)
 	 * 
-	 * This is complex code took 3-4 hours to get the code
-	 * correct,Must revise category
+	 * This is complex code took 3-4 hours to get the code correct,Must revise
+	 * category
 	 * 
 	 * Time Complexity: O(N2) (Best, Worst case both) Complexity is O(N2) when
 	 * elements are sorted also. In Bubble sort and insertion sort best case is O(N)
@@ -70,12 +71,17 @@ public class InsertionSort {
 
 	}
 
+	// https://www.youtube.com/watch?v=wWhAhp6PIuQ
+
+	// [2,3,5,| 4,7,5] At a moment we do have list sorted till a point...2,3,5 and
+	// when we pick 4 we will again sort the left arrayß
+
 	private static void insertionSort(int[] arr) {
 		int N = arr.length;
 		System.out.println("Before Sort " + Arrays.toString(arr));
 		for (int i = 1; i < N; i++) { // we start from i =1 as if we start from i =0 than j-- will give us negative.
 			int currentElement = arr[i];
-			int j = i - 1; // We want to go left for all elemnt from i-1,i-2 ....0;
+			int j = i - 1; // We want to go left for all element from i-1,i-2 ....0;
 			while (j >= 0 && arr[j] > currentElement) {
 				// we are doing j-- that will take to infinity, thus we add j>=0 .
 				// This need to be added before else we will get array index for arr[-1], Was
@@ -90,8 +96,8 @@ public class InsertionSort {
 		System.out.println("After  Sort " + Arrays.toString(arr));
 	}
 
-	
-	// I got first click to solve via two for loop. But we have catch here we need to run second loop arr[j] > curr
+	// I got first click to solve via two for loop. But we have catch here we need
+	// to run second loop arr[j] > curr
 
 	private static void insertionSort_usingfor(int[] arr) {
 		int N = arr.length;
@@ -99,13 +105,14 @@ public class InsertionSort {
 		for (int i = 1; i < N; i++) {
 			int curr = arr[i];
 			int empty = -1;
-			
+
 			for (int j = i - 1; j >= 0 && arr[j] > curr; j--) {
 				arr[j + 1] = arr[j];
 				empty = j;
-				//we can put the arr[empty] = curr; here also , but not need put that after move, 
-				//We can do that once one inner loop finishes.
-				//Like we do while while putting cared in hand during rummy ;)
+				// we can put the arr[empty] = curr; here also , but not need put that after
+				// move,
+				// We can do that once one inner loop finishes.
+				// Like we do while while putting cared in hand during rummy ;)
 			}
 
 			if (empty != -1) {

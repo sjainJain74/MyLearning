@@ -80,7 +80,7 @@ public class LinkedListBasic {
 
 	}
 
-	public  boolean void reorderList(ListNode head) {
+	public   void reorderList(ListNode head) {
 			
 		// When odd
 			// 1->2->3->4->5 input 

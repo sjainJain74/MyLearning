@@ -10,6 +10,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class ThreeSum {
+	//Start with https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/submissions/
+	//This can be solved in one pass using hashmap
+	
+	//https://leetcode.com/problems/3sum/
+	//This is sorted so, 2 pointer was obvious choice.
 
 	public static void main(String arg[]) {
 		// learnHashSet();
@@ -44,10 +49,10 @@ public class ThreeSum {
 		// -1 -1]. But if we store input as set We will loose this case.
 		List<List<Integer>> output = new ArrayList<List<Integer>>();
 		for (int i = 0; i < input.length - 2; i++) {
-			// Avoid dubli number call [-4,-4,-1,-1,-1,2,3,4,4,4] for -4 we shoud do only
+			// Avoid dubli number call [-4,-4,-1,-1,-1,2,3,4,4,4]
 			// one call , skip next call for -4
 			if (i == 0 || (input[i] != input[i - 1])) {
-				// If you do input[i] != input[i+1] than you will miss [-1,-1,2]
+				// If you do input[i] != input[i+1] than you will miss [-1,-1,2] very very tricky
 				int target = input[i];
 				twosumForAllComExceptDub(output, input, i, target);
 			}

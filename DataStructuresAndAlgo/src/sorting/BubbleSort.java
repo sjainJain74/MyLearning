@@ -6,8 +6,9 @@ public class BubbleSort {
 
 	/*
 	 * Time Complexity: O(N2) Auxiliary Space: O(1) The worst-case condition when
-	 * elements of the array are arranged in decreasing order. O(N2) Best case for bubble sort InsertionSort sort
-	 * Complexity is O(N) when elements are sorted.
+	 * elements of the array are arranged in decreasing order. O(N2) 
+	 * Best case for bubble sort InsertionSort sort
+	 * Complexity is O(N) when elements are sorted. using a swap boolean
 	 * 
 	 * https://www.geeksforgeeks.org/bubble-sort/
 	 */

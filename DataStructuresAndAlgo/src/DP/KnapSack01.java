@@ -1,5 +1,7 @@
 package DP;
 
+import java.util.ArrayList;
+
 public class KnapSack01 {
 
 	public static void main(String[] args) {
@@ -10,10 +12,22 @@ public class KnapSack01 {
 		int val[] = new int[] { 1, 4, 5, 7 };
 		int w = 7;
 		int n = wt.length;
-
+		
+		
+		Boolean[] boo = new Boolean [2];
+		System.out.print(boo[0]);
+		System.out.print(boo[1]);
+		
+		
 // Approach 1 with Recurrsion
 		System.out.println("Approach 1 with Recurrsion");
 		System.out.println(knapSachRecurrsion(wt, val, w, n));
+		
+		System.out.println("Approach 1 with Recurrsion and getting the array also");
+		ArrayList<Integer> list = new ArrayList();
+		System.out.println(isIncluded(wt, val, w, n,list));
+		System.out.println(list);
+		
 		// init the DP with -1 value
 		int[][] dp = createDPInitialize(w, n);
 		
@@ -181,9 +195,52 @@ public class KnapSack01 {
 			return Math.max((val[n - 1] + knapSachRecurrsion(wt, val, w - wt[n - 1], n - 1)),
 					(knapSachRecurrsion(wt, val, w, n - 1)));
 		}
-
 	}
 
+	
+	private static int isIncluded(int[] wt, int[] val, int w, int n, ArrayList<Integer> output) {	
+		if (w == 0 || n == 0) {
+			return 0;
+		} else if (wt[n - 1] > w) {
+			ArrayList<Integer> subOptimal = new ArrayList();
+			//No need to include in outout:)
+			subOptimal.addAll(output);
+			return isIncluded(wt, val, w, n - 1,subOptimal);
+		}
+		// (wt[n - 1] <= w)
+		else {
+			        ArrayList<Integer> subOptimal2 = new ArrayList();
+			        ArrayList<Integer> subOptimal3 = new ArrayList();
+			        subOptimal2.addAll(output);
+			        subOptimal3.addAll(output);
+					int take =  isIncluded(wt, val, w - wt[n - 1], n - 1,subOptimal2);
+					subOptimal2.add(wt[n - 1]);
+					
+					int notake= isIncluded(wt, val, w, n - 1,subOptimal3);
+					
+					if(val[n - 1] +take >notake) {
+						return val[n - 1] +take;
+					}
+					else {
+						
+						return notake;
+					}
+		}
+	}
+		
+	
+//1 3 4 5
+     
+//	              0 
+	
+//	     1                  ~1
+	     
+//	   3     ~3          3      ~3
+	
+//	4  ~4   4  ~4     4  ~4   4  ~4 
+	
+	
+	
 	private static int[][] createDPInitialize(int w, int n) {
 		int[][] dp = new int[n + 1][w + 1];
 		for (int x = 0; x < n + 1; x++) {

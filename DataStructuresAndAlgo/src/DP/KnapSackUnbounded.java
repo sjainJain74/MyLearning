@@ -67,9 +67,9 @@ public class KnapSackUnbounded {
 					dp[x][y] = 0;
 				} else if (x == 1 && y != 0) {
 					if (y % wt[0] == 0) {
-						dp[1][y] = y / wt[0];
+						dp[x][y] = y / wt[0];
 					} else {
-						dp[1][y] = Integer.sum(Integer.MAX_VALUE, -1);
+						dp[x][y] = Integer.sum(Integer.MAX_VALUE, -1);
 					}
 				} else if (wt[x - 1] <= y) {
 					dp[x][y] = Math.min((1 + dp[x][y - wt[x - 1]]), (dp[x - 1][y]));

@@ -27,7 +27,7 @@ public class MergeIntervalPattern {
 		 * System.out.println(farOne(far1)); System.out.println(farOne(far2));
 		 * System.out.println(farOne(far3)); System.out.println(farOne(far4));
 		 */
-		System.out.println(farOne(far5));
+		System.out.println(farOne(far2));
 
 	}
 

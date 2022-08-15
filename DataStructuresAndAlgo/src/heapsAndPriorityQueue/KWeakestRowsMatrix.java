@@ -30,12 +30,9 @@ public class KWeakestRowsMatrix {
 		 * outputList.addAll(sol_arrayIndex.get(each)); if(outputList.size()>=k) break;
 		 * } System.out.println(outputList);
 		 */
-			
 			System.out.println(Arrays.toString(kWeakestUsingVerticalIteration(mat,k)));
 		
 	}
-	
-	
 	
 		public static int[] kWeakestUsingVerticalIteration(int[][] mat, int k) {
 	

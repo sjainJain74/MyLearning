@@ -66,6 +66,8 @@ public class MergeSort {
 		int s2 = arr2.length; // 3
 		int[] arrOut = new int[s1 + s2];
 
+		//This is tricky taking 3 variable
+		
 		int i = 0;
 		int j = 0;
 		int k = 0;

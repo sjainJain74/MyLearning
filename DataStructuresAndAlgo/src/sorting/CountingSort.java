@@ -63,6 +63,11 @@ public class CountingSort {
 	}
 
 	private static void sortingColors_WithOnePass(int[] arr) {
+		//Only catch is we need to have 3 pointers. 
+		//At first glance it looks like we should have 2 pointers.
+		//But we need 2 pointers for pivot and 1 pointer for current.
+		//Current pointer will only till we have right pointer. ( starting of 2's )
+		
 		int N = arr.length;
 		int l = 0; // Index +1 for zero's chain
 		int r = N - 1;
